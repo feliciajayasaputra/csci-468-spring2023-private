@@ -36,6 +36,9 @@ public class AdditiveExpression extends Expression {
     public void validate(SymbolTable symbolTable) {
         leftHandSide.validate(symbolTable);
         rightHandSide.validate(symbolTable);
+        if (getType().equals(CatscriptType.STRING)) {
+            return;
+        }
         if (getType().equals(CatscriptType.INT)) {
             if (!leftHandSide.getType().equals(CatscriptType.INT)) {
                 leftHandSide.addError(ErrorType.INCOMPATIBLE_TYPES);
@@ -67,14 +70,28 @@ public class AdditiveExpression extends Expression {
 
     @Override
     public Object evaluate(CatscriptRuntime runtime) {
-        Integer lhsValue = (Integer) leftHandSide.evaluate(runtime);
-        Integer rhsValue = (Integer) rightHandSide.evaluate(runtime);
         //TODO handle string case
-        if (isAdd()) {
-            return lhsValue + rhsValue;
-        } else {
-            return lhsValue - rhsValue;
-        }
+
+            if (getType().equals(CatscriptType.STRING)){
+                Object lhsValue = leftHandSide.evaluate(runtime);
+                Object rhsValue = rightHandSide.evaluate(runtime);
+                return "" + lhsValue + rhsValue;
+            }
+            else{
+                Integer lhsValue = (Integer) leftHandSide.evaluate(runtime);
+                Integer rhsValue = (Integer) rightHandSide.evaluate(runtime);
+                if (isAdd()){
+                    return lhsValue + rhsValue;
+                }
+                else{
+                    return lhsValue - rhsValue;
+                }
+            }
+
+
+
+
+
     }
 
     @Override

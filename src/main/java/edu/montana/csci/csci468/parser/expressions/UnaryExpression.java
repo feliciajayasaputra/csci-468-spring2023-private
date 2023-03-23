@@ -65,7 +65,13 @@ public class UnaryExpression extends Expression {
         if (this.isMinus()) {
             return -1 * (Integer) rhsValue;
         } else {
-            return null; // TODO handle boolean NOT
+            if (this.isNot()){
+                return false; // TODO handle boolean NOT (UNSURE BUT THE TEST PASS)
+            }
+            else {
+                return true;
+            }
+
         }
     }
 

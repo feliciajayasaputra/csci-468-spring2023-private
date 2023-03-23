@@ -95,6 +95,7 @@ public class FunctionDefinitionStatement extends Statement {
                 addError(ErrorType.MISSING_RETURN_STATEMENT);
             }
         }
+
     }
 
     private boolean validateReturnCoverage(List<Statement> statements) {
@@ -146,7 +147,7 @@ public class FunctionDefinitionStatement extends Statement {
     //==============================================================
     @Override
     public void execute(CatscriptRuntime runtime) {
-        super.execute(runtime);
+        runtime.setValue(name, this);
     }
 
     @Override
