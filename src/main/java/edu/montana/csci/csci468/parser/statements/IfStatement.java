@@ -7,6 +7,8 @@ import edu.montana.csci.csci468.parser.ErrorType;
 import edu.montana.csci.csci468.parser.ParseError;
 import edu.montana.csci.csci468.parser.SymbolTable;
 import edu.montana.csci.csci468.parser.expressions.Expression;
+import org.objectweb.asm.Label;
+import org.objectweb.asm.Opcodes;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -91,6 +93,29 @@ public class IfStatement extends Statement {
 
     @Override
     public void compile(ByteCodeGenerator code) {
-        super.compile(code);
+        // two labels
+        Label ifFalse = new Label();
+        Label doneLabel = new Label();
+        // compile expression leave value on operand stack
+        expression.compile(code);
+        // IFEQ (tests if value is 0 aka false)
+        //    jump to false/else branch if so
+        code.addJumpInstruction(Opcodes.IFEQ, ifFalse);
+        //    compile true branch stuff
+        for(Statement trueStatement : trueStatements){
+            trueStatement.compile(code);
+        }
+        code.addJumpInstruction(Opcodes.GOTO, doneLabel);
+        code.addLabel(ifFalse);
+
+        //    jump over false/else branch unconditionally
+        for(Statement elseStatement : elseStatements){
+            elseStatement.compile(code);
+        }
+        code.addJumpInstruction(Opcodes.GOTO, doneLabel);
+        //    label false/else branch
+        code.addLabel(doneLabel);
+        //    compile false/else branch
+
     }
 }

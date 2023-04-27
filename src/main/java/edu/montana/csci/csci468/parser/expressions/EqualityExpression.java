@@ -6,6 +6,8 @@ import edu.montana.csci.csci468.parser.CatscriptType;
 import edu.montana.csci.csci468.parser.SymbolTable;
 import edu.montana.csci.csci468.tokenizer.Token;
 import edu.montana.csci.csci468.tokenizer.TokenType;
+import org.objectweb.asm.Label;
+import org.objectweb.asm.Opcodes;
 
 import java.util.Objects;
 
@@ -72,7 +74,33 @@ public class EqualityExpression extends Expression {
 
     @Override
     public void compile(ByteCodeGenerator code) {
-        super.compile(code);
+        //compile lhs
+        getLeftHandSide().compile(code);
+        //box lhs
+        box(code, getLeftHandSide().getType());
+        //compile rhs
+        getRightHandSide().compile(code);
+        //box rhs
+        box(code, getRightHandSide().getType());
+        code.addMethodInstruction(Opcodes.INVOKESTATIC,
+                ByteCodeGenerator.internalNameFor(Objects.class),
+                "equals", "(Ljava/lang/Object;Ljava/lang/Object;)Z");
+        // invoke static Objects.equals() method
+        if (!isEqual()){
+            Label setTrue = new Label();
+            Label endLabel = new Label();
+            code.addJumpInstruction(Opcodes.IFEQ, setTrue);  // if it is 0 which means it's false
+            code.pushConstantOntoStack(false);   // go here if it's 0
+            code.addJumpInstruction(Opcodes.GOTO, endLabel); // then here to end label
+            code.addLabel(setTrue);  // if it's 1 which is true
+            code.pushConstantOntoStack(true);   // go here
+            code.addLabel(endLabel);  // end the label
+
+        }
+
+
+
+
     }
 
 

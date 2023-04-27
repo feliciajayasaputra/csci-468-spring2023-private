@@ -78,4 +78,41 @@ public class CatscriptBasicExpressionEvalTest extends CatscriptTestBase {
         assertEquals(1, evaluateExpression("(1)"));
     }
 
+    @Test
+    void nestedLoopsWorkProperly(){
+        assertEquals("1\n1\n2\n2\n1\n2\n", executeProgram("" +
+                "for( x in [1, 2] ) {\t//outside loop\n" +
+                "    print(x)\n" +
+                "    for( y in [1, 2] ) { //nested loop\n" +
+                "        print(y)\n" +
+                "    }\n" +
+                "}"));
+    }
+
+    @Test
+    void nestedIfStatement(){
+        assertEquals("18", executeProgram(""+
+                "if(x > 10){ "+
+                "    if (x < 20) "+
+                "    print(x) " +
+                "} else { " +
+                "    print( 10 ) " +
+                "}") + "x = 18");
+    }
+
+    @Test
+    void functionwithPrint(){
+        assertEquals("1", executeProgram("function hi() {print(1)}" + "hi()"));
+    }
+
+    @Test
+    void printEvaluateExpression(){
+        assertEquals("4" ,executeProgram("print(1 + 3)"));
+    }
+
+
+    @Test
+    void printVarStatementWork(){
+        assertEquals("3", executeProgram("var x = 3" + "print(x)"));
+    }
 }

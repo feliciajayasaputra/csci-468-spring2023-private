@@ -45,6 +45,7 @@ public class IntegerLiteralExpression extends Expression {
 
     @Override
     public void compile(ByteCodeGenerator code) {
+
         code.pushConstantOntoStack(integerVal);
     }
 }
