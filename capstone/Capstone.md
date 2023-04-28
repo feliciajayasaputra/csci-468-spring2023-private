@@ -6,6 +6,7 @@ Please include a zip file of the final repository in this directory.
 
 Describe how your team worked on this capstone project. List each team member’s primary contributions and estimate the percentage of time that was spent by each team member on the project. Identify team members generically as team member 1, team member 2, etc.
 
+
 # Section 3: Design pattern
 
 Identify one design pattern that was used in your capstone project and describe exactly where in the code it is located. 
