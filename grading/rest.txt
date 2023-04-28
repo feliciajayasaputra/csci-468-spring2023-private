@@ -26,29 +26,72 @@
 [INFO] Running edu.montana.csci.csci468.tokenizer.CatScriptTokenizerTest
 [INFO] Tests run: 16, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.017 s - in edu.montana.csci.csci468.tokenizer.CatScriptTokenizerTest
 [INFO] Running edu.montana.csci.csci468.parser.CatscriptParserStatementsTest
-[INFO] Tests run: 21, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s - in edu.montana.csci.csci468.parser.CatscriptParserStatementsTest
+[INFO] Tests run: 21, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s - in edu.montana.csci.csci468.parser.CatscriptParserStatementsTest
 [INFO] Running edu.montana.csci.csci468.parser.CatscriptParserTypeCheckingTest
-[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s - in edu.montana.csci.csci468.parser.CatscriptParserTypeCheckingTest
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s - in edu.montana.csci.csci468.parser.CatscriptParserTypeCheckingTest
 [INFO] Running edu.montana.csci.csci468.parser.CatscriptParserErrorsTest
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in edu.montana.csci.csci468.parser.CatscriptParserErrorsTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in edu.montana.csci.csci468.parser.CatscriptParserErrorsTest
 [INFO] Running edu.montana.csci.csci468.parser.CatscriptParserSymbolCheckingTest
-[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in edu.montana.csci.csci468.parser.CatscriptParserSymbolCheckingTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in edu.montana.csci.csci468.parser.CatscriptParserSymbolCheckingTest
 [INFO] Running edu.montana.csci.csci468.parser.CatscriptParserExpressionsTest
-[INFO] Tests run: 29, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 s - in edu.montana.csci.csci468.parser.CatscriptParserExpressionsTest
+[INFO] Tests run: 29, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s - in edu.montana.csci.csci468.parser.CatscriptParserExpressionsTest
 [INFO] Running edu.montana.csci.csci468.eval.CatscriptStatementExecutionTest
-[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s - in edu.montana.csci.csci468.eval.CatscriptStatementExecutionTest
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s - in edu.montana.csci.csci468.eval.CatscriptStatementExecutionTest
 [INFO] Running edu.montana.csci.csci468.eval.CatscriptBasicExpressionEvalTest
-[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s - in edu.montana.csci.csci468.eval.CatscriptBasicExpressionEvalTest
+[ERROR] Tests run: 13, Failures: 3, Errors: 1, Skipped: 0, Time elapsed: 0.007 s <<< FAILURE! - in edu.montana.csci.csci468.eval.CatscriptBasicExpressionEvalTest
+[ERROR] printEvaluateExpression  Time elapsed: 0.002 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+expected: <4> but was: <4
+>
+	at edu.montana.csci.csci468.eval.CatscriptBasicExpressionEvalTest.printEvaluateExpression(CatscriptBasicExpressionEvalTest.java:110)
+
+[ERROR] printVarStatementWork  Time elapsed: 0.001 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+expected: <3> but was: <3
+>
+	at edu.montana.csci.csci468.eval.CatscriptBasicExpressionEvalTest.printVarStatementWork(CatscriptBasicExpressionEvalTest.java:116)
+
+[ERROR] functionwithPrint  Time elapsed: 0 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+expected: <1> but was: <1
+>
+	at edu.montana.csci.csci468.eval.CatscriptBasicExpressionEvalTest.functionwithPrint(CatscriptBasicExpressionEvalTest.java:105)
+
+[ERROR] nestedIfStatement  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "edu.montana.csci.csci468.parser.CatscriptType.equals(Object)" because the return value of "edu.montana.csci.csci468.parser.expressions.Expression.getType()" is null
+	at edu.montana.csci.csci468.eval.CatscriptBasicExpressionEvalTest.nestedIfStatement(CatscriptBasicExpressionEvalTest.java:94)
+
 [INFO] Running edu.montana.csci.csci468.eval.CatscriptFunctionArgsAndReturnEvalTest
-[INFO] Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s - in edu.montana.csci.csci468.eval.CatscriptFunctionArgsAndReturnEvalTest
+[INFO] Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s - in edu.montana.csci.csci468.eval.CatscriptFunctionArgsAndReturnEvalTest
 [INFO] 
 [INFO] Results:
 [INFO] 
-[INFO] Tests run: 116, Failures: 0, Errors: 0, Skipped: 0
+[ERROR] Failures: 
+[ERROR]   CatscriptBasicExpressionEvalTest.functionwithPrint:105 expected: <1> but was: <1
+>
+[ERROR]   CatscriptBasicExpressionEvalTest.printEvaluateExpression:110 expected: <4> but was: <4
+>
+[ERROR]   CatscriptBasicExpressionEvalTest.printVarStatementWork:116 expected: <3> but was: <3
+>
+[ERROR] Errors: 
+[ERROR]   CatscriptBasicExpressionEvalTest.nestedIfStatement:94->CatscriptTestBase.executeProgram:102 » NullPointer
+[INFO] 
+[ERROR] Tests run: 121, Failures: 3, Errors: 1, Skipped: 0
 [INFO] 
 [INFO] ------------------------------------------------------------------------
-[INFO] BUILD SUCCESS
+[INFO] BUILD FAILURE
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  1.099 s
-[INFO] Finished at: 2023-04-26T10:07:55-06:00
+[INFO] Total time:  1.160 s
+[INFO] Finished at: 2023-04-28T09:46:34-06:00
 [INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.22.1:test (default-test) on project csci-468-spring2022: There are test failures.
+[ERROR] 
+[ERROR] Please refer to /Users/carson/Projects/msu/csci-468-spring2023/grading/scripts/repos/felicia_jayasaputra/target/surefire-reports for the individual test results.
+[ERROR] Please refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
